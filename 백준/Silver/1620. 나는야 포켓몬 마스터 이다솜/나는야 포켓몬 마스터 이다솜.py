@@ -1,14 +1,11 @@
 import sys
 input=sys.stdin.readline
-a=[]
-N,M=map(int,input().split())
-for i in range(N):
-    a.append(input().replace("\n", ""))
-for _ in range(M):
-    b=input().replace("\n", "")
-    try:
-        b=int(b)
-        print(a[b-1])
-    except ValueError:
-        b=str(b)
-        print((a.index(b))+1)
+n,m=map(int,input().split())
+d = {}
+for i in range(n):
+    name = input().rstrip()
+    d[str(i+1)] = name
+    d[name] = i+1
+    
+for i in range(m):
+    print(d[input().rstrip()])
