@@ -7,7 +7,7 @@ while (b != a):
         sys.exit()
 
     if b != 1 and b % 10 == 1:
-        b = int(b//10)
+        b = b//10
         cnt += 1
     else:
         b = b // 2
