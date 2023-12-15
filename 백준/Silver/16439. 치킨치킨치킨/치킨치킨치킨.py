@@ -1,5 +1,5 @@
 import sys
-from itertools import permutations
+from itertools import combinations
 
 # 치킨 3개를 입력받는데 최댓값을 출력해야함.
 # 모든 경우의 수의 합 비교 ??
@@ -15,7 +15,7 @@ order = [i for i in range(m)]
 for i in range(n):
     arr.append(list(map(int,input().split())))
 
-per = list(permutations(order, 3))
+per = list(combinations(order, 3))
 
 maximum = 0
 for i in range(len(per)):   # 순열 순서
