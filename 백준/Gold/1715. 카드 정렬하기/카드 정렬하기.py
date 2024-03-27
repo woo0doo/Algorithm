@@ -1,16 +1,21 @@
-import heapq
 import sys
-input=sys.stdin.readline
-n=int(input())
-card=list(int(input()) for _ in range(n))
-heapq.heapify(card)
-answer=0
+import heapq
+input = sys.stdin.readline
 
-while len(card) != 1:
-    first = heapq.heappop(card)
-    second = heapq.heappop(card)
-    sum = first + second
-    answer += sum
-    heapq.heappush(card, sum)
+n = int(input())
+heap = []
+result = 0
+for _ in range(n):
+    num = int(input())
+    heapq.heappush(heap, num)
 
-print(answer)
+while True:
+    if len(heap) == 1:
+        break
+    minNum = heapq.heappop(heap)
+    minNum2 = heapq.heappop(heap)
+    addNumber = minNum + minNum2
+    result += addNumber
+    heapq.heappush(heap, addNumber)
+
+print(result)
