@@ -1,12 +1,14 @@
-import itertools
-from itertools import product
+N, M = map(int,input().split())
 
-n, m = map(int, input().split())
+arr = []
+def backTracking():
+    if len(arr) == M:
+        print(*arr)
+        return
 
-numbers = [i for i in range(1, n + 1)]
+    for i in range(1, N+1):
+        arr.append(i)
+        backTracking()
+        arr.pop()
 
-combi = list(itertools.product(numbers, repeat=m))
-for i in range(len(combi)):
-    for j in range(m):
-        print(combi[i][j], end=' ')
-    print()
+backTracking()
