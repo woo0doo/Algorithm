@@ -1,34 +1,37 @@
+import sys
 from collections import deque
-n=int(input())
-counts = []
-graph=[list(map(int,input())) for _ in range(n)]
-def bfs(x,y):
+input = sys.stdin.readline
 
-    dx=[1,-1,0,0]
-    dy=[0,0,1,-1]
+N = int(input())
 
-    queue=deque()
-    queue.append((x,y))
-    graph[x][y] = 0
+graph = [list(map(int, input().rstrip())) for _ in range(N)]
+
+dy = [0, 0, 1, -1]
+dx = [1, -1, 0, 0]
+
+queue = deque()
+result = []
+def bfs(y, x):
+    graph[y][x] = 0
+    queue.append((y, x))
     cnt = 1
-
     while queue:
-        x,y=queue.popleft()
-
+        y, x = queue.popleft()
         for i in range(4):
-            nx = x+dx[i]
-            ny = y+dy[i]
+            ny = y + dy[i]
+            nx = x + dx[i]
 
-            if 0<=nx<n and 0<=ny<n and graph[nx][ny] == 1:
-                graph[nx][ny] = 0
-                queue.append((nx,ny))
-                cnt+=1
-    counts.append(cnt)
+            if 0 <= nx < N and 0 <= ny < N and graph[ny][nx] == 1:
+                graph[ny][nx] = 0
+                queue.append((ny,nx))
+                cnt += 1
+    result.append(cnt)
 
-for i in range(n):
-    for j in range(n):
-        if graph[i][j] == 1:
-            bfs(i,j)
-counts.sort()
-print(len(counts))
-print(*counts, sep="\n")
+for y in range(N):
+    for x in range(N):
+        if graph[y][x] == 1:
+            bfs(y, x)
+
+result.sort()
+print(len(result))
+print(*result, sep='\n')
