@@ -1,23 +1,23 @@
-import sys
+N = int(input())
+a = list(map(int, input().split()))
+a.sort()
 
-n=int(input())
-num1=list(map(int,sys.stdin.readline().split()))
-n2=int(input())
-num2=list(map(int,sys.stdin.readline().split()))
-
-num1.sort()
-
-for i in num2:
-    start=0
-    end=len(num1)-1
+def binarySearch(target):
+    start = 0
+    end = N-1
     while start <= end:
-        mid = (start+end) // 2
-        if i == num1[mid]:
+        mid = (start+end)//2
+        if a[mid] == target:
             print(1)
-            break
-        elif i > num1[mid]:
-            start = mid+1
+            return
+        elif a[mid] <= target:
+            start = mid + 1
         else:
-            end=mid-1
-    else:
-        print(0)
+            end = mid - 1
+    print(0)
+    return
+
+m = int(input())
+b = list(map(int, input().split()))
+for i in range(m):
+    binarySearch(b[i])
