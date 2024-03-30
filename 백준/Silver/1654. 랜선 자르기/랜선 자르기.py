@@ -1,21 +1,14 @@
-import sys
-
-k, n = map(int, sys.stdin.readline().split())
-arr = []
-
-for i in range(k):
-    arr.append(int(input()))
-
-start = 1
-end = max(arr)
-
-while (start <= end):
+k, n = map(int, input().split())
+lanson = []
+for i in range(k): lanson.append(int(input()))
+start, end = 1, max(lanson)
+answer = 0
+while start <= end:
     mid = (start + end) // 2
-    cnt = 0
-    for i in range(k):
-        cnt += arr[i] // mid
-    if cnt >= n:
+    num = 0
+    for len in lanson:
+        num += len // mid
+    if num >= n:
         start = mid + 1
-    else:
-        end = mid - 1
+    else: end = mid - 1
 print(end)
