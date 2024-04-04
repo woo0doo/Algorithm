@@ -16,6 +16,8 @@ cnt = 0
 while box:
     cnt += 1
     for i in crane:
+        if box and i < box[-1]:
+            continue
         for j in box:
             if i >= j:
                 box.remove(j)
